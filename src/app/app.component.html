@@ -1,0 +1,16 @@
+<nav>
+    <div class="nav-wrapper teal">
+        <a href="#" class="brand-logo center">
+            Pokedex
+        </a>
+        <div class="container justify-content-center" *ngIf="isLoggedIn$ | async">
+            <a href="#" class="mr-3 logout">{{name}}</a>
+            <button class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="onLogOut()">Logout</button>
+        </div>
+    </div>  
+</nav>
+
+<router-outlet></router-outlet>
+
+
+

@@ -1,0 +1,46 @@
+<div *ngIf="pokemon" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ pokemon.data.name}}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="pokemon.data.picture">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td><strong>{{ pokemon.data.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Life point</td>
+                <td><strong>{{ pokemon.data.hp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Damage</td>
+                <td><strong>{{ pokemon.data.cp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <span *ngFor="let type of pokemon.data.types" class="{{ type | pokemonTypeColor }}">{{ type }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Creation date</td>
+                <td><em>{{pokemon.data.created.toMillis()|date}}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()">Feedback</a>
+          <a (click)="goToEditPokemon(pokemon)">Edit</a>
+          <a (click)=" deletePokemon(pokemon)">Delete</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!pokemon' class="center"><app-loader></app-loader></h4>
